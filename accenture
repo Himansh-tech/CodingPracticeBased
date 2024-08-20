@@ -1,4 +1,17 @@
+//Question: 
+/**
+The String Decoder :
+You are provided with a string which has a sequence of 1s and Os. This sequence is the encoded version of a english word. You are supposed to write a program to
+decode the provided string and find the original word.
+Each Alphabet is representing by a sequence of 1s.
+A:1 B:11
+C: 111
+D: 1111
+E : 11111
+F: 111111
+**/
 
+/CODE
 import java.util.*;
 
 class decode{
@@ -26,3 +39,42 @@ public class main {
     }
 
 };
+
+
+
+
+
+//Question:
+// A googly prime number is defined as a number that is derived from the sum of its individual digits. For example, if N = 43, the sum of its individual digits is 4+3 = 7, which is prime making it a googly prime number.
+// Your task is to find whether the current number is googly prime number or not.
+
+//CODE
+import java.util.*;
+
+class googly{
+    public static String prime(long n){
+        long num = 0;
+        while(n!=0){
+            num = num + (n % 10);
+            n = n / 10;
+        }
+        for(int i=2;i<Math.sqrt(num);i++){
+            if(num % i == 0){
+                return "No";
+            }
+        }
+        return "Yes";
+    }
+}
+
+public class main {
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        long n = sc.nextInt();
+        String val = googly.prime(n);
+        System.out.println(val);
+    }
+}
+
+
+

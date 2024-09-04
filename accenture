@@ -76,5 +76,57 @@ public class main {
     }
 }
 
+//Write a program that takes four integers as input and outputs the sum of all negative integers. If there are no negative integers, the output should be 0.
+Example Test Case:
+• Input:
+° a = -3
+• b = 7
+° c = -1
+• d = 4
+• Output:
+° -4
+
+
+//code
+
+import java.util.*;
+public class Solution {
+    public int fun(int a,int b,int c,int d){
+        int val = 0;
+        if(a>=0 && b>=0 && c>=0 && d>=0){
+            return 0;
+        }
+        else{
+            if(a<0){
+                val += a;
+            }
+            if(b<0){
+                val += b;
+            }
+            if(c<0){
+                val += c;
+            }
+            if(d<0){
+                val += d;
+            }
+        }
+        return val;
+    }
+public static void main(String[] args) {
+    Solution obj = new Solution();
+    Scanner sc = new Scanner(System.in);
+    int t = sc.nextInt();
+    for(int i=0;i<t;i++){
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        int d = sc.nextInt();
+
+        System.out.println(obj.fun(a, b, c, d));
+    }
+}
+    
+}
+
 
 

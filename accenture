@@ -129,4 +129,61 @@ public static void main(String[] args) {
 }
 
 
+//Objective: Write a program that takes an array arr of length n, 
+filters out the negative numbers, and then prints the median of the remaining array. If there are two mid-
+indices, print the element at the smaller index. 
+
+Example Test Case:
+Input:
+arr = [7, -3, 8, 2, -5, 10, 12]
+Output:
+8
+
+//code
+
+import java.util.*;
+public class Solution {
+    public int fun(int arr[], int len){
+        int count = 0;
+        for(int i=0;i<len;i++){
+            if(arr[i]>0){
+                count++;
+            }
+        }
+        if(count == 0){
+            return 0;
+        }
+        int ans[] = new int[count];
+        int j = 0;
+        for(int i=0;i<len;i++){
+            if(arr[i]>0){
+                ans[j]=arr[i];
+                j++;
+            }
+        }
+
+        Arrays.sort(ans);
+        if(count %2 != 0){
+            return ans[count/2];
+        }
+        else{
+            return ans[(count/2)-1];
+        }
+
+    }
+    public static void main (String[] args){
+        Solution obj = new Solution();
+        Scanner sc = new Scanner(System.in);
+        int t= sc.nextInt();
+        for(int i=0;i<t;i++){
+            int len = sc.nextInt();
+            int arr[] = new int[len];
+            for(int j=0;j<len;j++){
+                arr[j] = sc.nextInt();
+            }
+        System.out.println(obj.fun(arr, len));
+        }
+        
+    }
+}
 

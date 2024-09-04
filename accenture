@@ -187,3 +187,52 @@ public class Solution {
     }
 }
 
+//Problem Statement:
+Write a function that takes an integer n as input and returns the sum of all prime numbers less than n.
+
+Input: 10
+Output: 17
+
+Explanation:
+The prime numbers less than 10 are 2,
+3, 5, and 7.
+Their sum is 17.
+
+
+//code
+
+
+import java.util.*;
+public class Solution {
+
+    public boolean isPrime(int n){
+        for(int i=2;i<=Math.sqrt(n);i++){
+            if(n%i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public int fun(int tillNum){
+        int sum = 0;
+        for(int i=2;i<tillNum;i++){
+            if(isPrime(i)){
+                sum = sum + i;
+            }
+        }
+        return sum;
+    }
+
+
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        Solution obj = new Solution();
+        int t = sc.nextInt();
+        for(int i=0;i<t;i++){
+            int tillNum = sc.nextInt();
+            System.out.println(obj.fun(tillNum));
+        }
+    }
+}

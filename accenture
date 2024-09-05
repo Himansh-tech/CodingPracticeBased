@@ -236,3 +236,71 @@ public class Solution {
         }
     }
 }
+
+
+//question is that we are given string and keeping the position of vowels in it same as it is we have to 
+//find all different words that can be formed by permuting consonants. (keep in mind the repeating characters)
+
+
+import java.util.*;
+
+public class Solution {
+
+    // Method to calculate factorial
+    public int fact(int n) {
+        int ans = 1;
+        while (n > 0) {
+            ans = ans * n;
+            n = n - 1;
+        }
+        return ans;
+    }
+
+    // Main logic to calculate permutations
+    public int fun(String str) {
+        int n = str.length();
+        HashMap<Character, Integer> mp = new HashMap<>();
+        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+
+        // Counting consonants and storing their frequencies
+        for (int i = 0; i < n; i++) {
+            char ch = str.charAt(i);
+            if (!vowels.contains(ch)) { // Check if it's not a vowel (i.e., it's a consonant)
+                mp.put(ch, mp.getOrDefault(ch, 0) + 1);
+            }
+        }
+
+        // If no consonants, return 0 as per the problem statement
+        if (mp.size() == 0) {
+            return 0;
+        }
+
+        // Calculate the factorial of the number of unique consonants
+        int tofact = 0;
+        for (Map.Entry<Character, Integer> entry : mp.entrySet()) {
+            int value = entry.getValue();
+            if (value >= 1) {
+                tofact = tofact + value;
+            }
+        }
+        int ans1 = fact(tofact);
+
+        // Adjust for repeated consonants by dividing by factorial of their frequencies
+        for (Map.Entry<Character, Integer> entry : mp.entrySet()) {
+            int value = entry.getValue();
+            if (value > 1) {
+                ans1 /= fact(value);
+            }
+        }
+
+        return ans1;  // Return the final result
+    }
+
+    public static void main(String args[]) {
+        Solution obj = new Solution();
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+
+        System.out.println(obj.fun(str));  // Output the result
+    }
+}

@@ -1,6 +1,6 @@
 
 
-//Remeeber top level class can't be static so in below code do not think of making tcs1 class as Static
+//Remember top level class can't be static so in below code do not think of making tcs1 class as Static
 
 
 
